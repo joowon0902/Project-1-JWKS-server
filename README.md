@@ -8,7 +8,7 @@ A minimal educational JWKS server that:
   - If you add the `?expired=1` query parameter, the server issues a **JWT signed with an expired key** and includes an **expired `exp`** claim.
 - Listens on port **8080** by default.
 
-> ⚠️ For classroom use only. Do not deploy as-is to production.
+
 
 ## Quickstart
 
@@ -53,3 +53,7 @@ tests/
 - `ruff check .`
 - `black --check .`
 - `pytest --maxfail=1 --disable-warnings -q --cov=app --cov-report=term-missing`
+
+
+## Screenshots
+For grading and verification purposes, required screenshots are included in the `screenshots/` folder

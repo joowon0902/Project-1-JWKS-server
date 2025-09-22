@@ -33,3 +33,13 @@ def auth(expired: Optional[bool] = Query(default=False)):
     key = active_key
     token, iat, exp = sign_jwt(key, subject='user123', expires_in_seconds=900, expired_override=False)
     return {'token': token, 'kid': key.kid, 'issued_at': iat, 'expires_at': exp, 'expired_key': False}
+
+
+@app.get("/jwks.json")
+def get_jwks_json(kid: Optional[str] = Query(default=None)):
+    return JSONResponse(store.jwks(kid=kid))
+
+
+@app.get("/.well-known/jwks.json")
+def get_well_known_jwks(kid: Optional[str] = Query(default=None)):
+    return JSONResponse(store.jwks(kid=kid))
